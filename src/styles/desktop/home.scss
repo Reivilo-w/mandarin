@@ -1,0 +1,17 @@
+html body {
+  .home {
+    @apply flex justify-center flex-wrap;
+
+    h1 {
+      @apply w-full text-center mb-2;
+    }
+
+    .join-party {
+      @apply w-full flex justify-center mt-2;
+
+      input {
+        @apply mr-1;
+      }
+    }
+  }
+}

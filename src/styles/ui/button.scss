@@ -1,0 +1,9 @@
+html body {
+    button, .button {
+        @apply inline-block font-semibold uppercase p-1 border-b-3 bg-yellow-500 border-yellow-800 transition-all duration-75 ease-linear cursor-pointer;
+
+        &:hover {
+            @apply border-yellow-600;
+        }
+    }
+}

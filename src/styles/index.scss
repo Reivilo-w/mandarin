@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./ui/main.scss";
+@import "./ui/input.scss";
+@import "./ui/button.scss";
+@import "./desktop/home.scss";

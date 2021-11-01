@@ -1,0 +1,9 @@
+html body {
+    input {
+        @apply outline-none p-1 border-b-3 border-yellow-800 text-black transition-all duration-75 ease-linear;
+
+        &:focus {
+            @apply outline-none border-yellow-600;
+        }
+    }
+}
