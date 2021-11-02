@@ -7,17 +7,25 @@ import "./styles/index.scss";
 import Home from "./views/Home";
 import Party from "./views/Party";
 import Board from "./views/Board";
+import io from "socket.io-client";
+import ApplicationContext from "./ApplicationContext";
 // import reportWebVitals from "./reportWebVitals";
+
+const socket = io(process.env.REACT_APP_SOCKET_URL);
+
+const contextValue = { socket: socket };
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/party/:uuid" component={Party} />
-        <Route path="/board/:uuid" component={Board} />
-      </Switch>
-    </Router>
+    <ApplicationContext.Provider value={contextValue}>
+      <Router>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/party/:uuid" component={Party} />
+          <Route path="/board/:uuid" component={Board} />
+        </Switch>
+      </Router>
+    </ApplicationContext.Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

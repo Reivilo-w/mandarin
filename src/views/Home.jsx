@@ -1,17 +1,39 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
+import React, { useContext } from "react";
+import { useHistory } from "react-router-dom";
+import ApplicationContext from "../ApplicationContext";
 
 const Home = () => {
+  const context = useContext(ApplicationContext);
+  const socket = context.socket;
+  const history = useHistory();
+
+  const createParty = () => {
+    if (socket.connected) {
+      socket.emit("createParty", (response) => {
+        console.log(response);
+        if (!response.status) {
+          alert(response.message);
+          return;
+        }
+
+        history.push(`/party/${response.data.party.uuid}`);
+      });
+    }
+  };
+
   return (
     <section className="home">
       <h1>Mandarin's Game</h1>
-      <Link className="button" to={`/party/${uuidv4()}`}>
-        Create party
-      </Link>
+      <button
+        onClick={() => {
+          createParty();
+        }}
+      >
+        Create Party
+      </button>
       <div className="join-party">
         <input type="text" />
-        <button className="">Join party</button>
+        <button>Join party</button>
       </div>
     </section>
   );
