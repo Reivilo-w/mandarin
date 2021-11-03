@@ -11,7 +11,7 @@ const Home = () => {
     if (socket.connected) {
       socket.emit("createParty", (response) => {
         console.log(response);
-        if (!response.status) {
+        if (response.status === "error") {
           alert(response.message);
           return;
         }
